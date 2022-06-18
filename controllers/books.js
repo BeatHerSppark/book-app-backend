@@ -26,7 +26,16 @@ export const getBooks = async (req, res) => {
 
 export const getBooksBySearch = async (req, res) => {};
 
-export const getBook = async (req, res) => {};
+export const getBook = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const book = await BookModel.findById(id);
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export const addBook = async (req, res) => {};
 
