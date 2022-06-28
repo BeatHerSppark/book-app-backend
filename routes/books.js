@@ -15,10 +15,10 @@ import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", auth, getBooks);
+router.get("/", getBooks);
 router.get("/search", auth, getBooksBySearch);
 router.get("/:id", auth, getBook);
-router.post("/", auth, addBook);
+router.post("/", addBook);
 router.patch("/:id", auth, updateBook);
 router.delete("/:id", auth, deleteBook);
 router.patch("/:id/rateBook", auth, rateBook);

@@ -5,13 +5,22 @@ const bookSchema = mongoose.Schema({
   author: String,
   description: String,
   genres: [String],
-  ratings: {
-    type: [Number],
-    default: [],
-  },
-  reviews: {
-    type: [String],
-    default: [],
+  ratings: [
+    {
+      user: String,
+      rating: Number,
+    },
+  ],
+  reviews: [
+    {
+      user: String,
+      review: String,
+    },
+  ],
+  releaseDate: String,
+  addedAt: {
+    type: Date,
+    default: new Date(),
   },
 });
 

@@ -37,7 +37,22 @@ export const getBook = async (req, res) => {
   }
 };
 
-export const addBook = async (req, res) => {};
+export const addBook = async (req, res) => {
+  const book = req.body;
+
+  const newBook = new BookModel({
+    ...book,
+    addedAt: new Date().toISOString(),
+  });
+
+  try {
+    await newBook.save();
+
+    res.status(201).json(newBook);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
 
 export const updateBook = async (req, res) => {};
 
